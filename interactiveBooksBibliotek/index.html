@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interactive Book Library</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+    }
+    header {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 10px 0;
+    }
+    .container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+        color: #333;
+    }
+    form {
+        margin-bottom: 20px;
+    }
+    input, select, button {
+        margin: 5px;
+        padding: 5px;
+    }
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    li {
+        margin-bottom: 10px;
+        padding: 10px;
+        background-color: #f9f9f9;
+        border-radius: 5px;
+        display: flex;
+        justify-content: space-between;
+    }
+    .delete-btn {
+        background-color: #ff6666;
+        color: #fff;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+<header>
+    <h1>Interactive Book Library</h1>
+</header>
+<div class="container">
+    <h2>Add a Book</h2>
+    <form id="book-form">
+        <input type="text" placeholder="Title" id="title">
+        <input type="text" placeholder="Author" id="author">
+        <input type="number" placeholder="Year" id="year">
+        <input type="number" placeholder="Pages" id="pages">
+        <button type="submit">Add Book</button>
+    </form>
+    <h2>Books</h2>
+    <input type="text" placeholder="Search by Title" id="search">
+    <select id="sort">
+        <option value="title">Sort by Title</option>
+        <option value="author">Sort by Author</option>
+        <option value="year">Sort by Year</option>
+        <option value="pages">Sort by Pages</option>
+    </select>
+    <ul id="book-list"></ul>
+</div>
+
+</body>
+</html>
