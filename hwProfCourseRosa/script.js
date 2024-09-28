@@ -1,24 +1,27 @@
-function custom_fetch(apiUrl, callback) {
-    fetch(apiUrl)
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Error while fetching data');
-        }
-        return response.json();
-    })
-    .then(data => {
-        callback(data);
-    })
-    .catch(error => {
-        console.error(error);
-    });
+async function getUserList(userIds) {
+    try {
+        const response = await Promise.all(
+            userIds.map(id => fetch(`https://jsonplaceholder.typicode.com/users/${id}`))
+        );
+        
+        const userData = await Promise.all(
+            response.map(res => res.json())
+        );
+        
+        const userList = document.createElement('ul');
+        userData.forEach((user, index) => {
+            const listItem = document.createElement('li');
+            listItem.textContent = (`${index + 1}.  ${user.name}  ${user.email}`);
+            userList.appendChild(listItem);
+        });
+        
+        document.body.appendChild(userList);
+    } catch (error) {
+        console.error('Error while fetching user data:', error);
+    }
 }
 
-// z.B.
-const apiUrl = 'https://jsonplaceholder.typicode.com/posts';
-const callbackFunction = (responseData) => {
-    console.log(responseData);
-};
-
-custom_fetch(apiUrl, callbackFunction);
+// Beispeil der Funtion getUserList
+const userIds = [8, 7, 9]; // z.B. für mich
+getUserList(userIds);
 
